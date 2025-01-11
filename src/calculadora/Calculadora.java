@@ -73,15 +73,35 @@ public class Calculadora {
 
             case 6:
                 numeros = obtenerNumeros(sc, 1);
+                if (numeros[0] < 0){
+                    System.out.println("El número tiene que ser positivo");
+                    return;
+                }
                 resultado = Math.sqrt(numeros[0]);
-                historial.add(contador + ". " + numeros[0] + " √ " + numeros[1] + " = " + resultado);
+                historial.add(contador + ". √" + numeros[0] + " = " + resultado);
                 break;
+
+            case 7:
+                numeros = obtenerNumeros(sc, 2);
+                resultado = numeros[0] % numeros[1];
+                historial.add(contador + ". " + numeros[0] + " % " + numeros[1] + " = " + resultado);
+                break;
+
             case 8:
                 historial.forEach(System.out::println);
+                break;
 
+            case 9:
+                System.out.println("Saliendo del programa");
+                break;
+
+                default:
+                    System.out.println("Opcion no valida");
         }
 
-        System.out.println("Resultado: " + resultado);
+        if (opcion != 8 && opcion != 9) {
+            System.out.println("Resultado: " + resultado);
+        }
         contador++;
 
     }
